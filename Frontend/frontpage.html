@@ -1,43 +1,65 @@
-<!doctype html>
-<html>
-        <head>
-                <title>MyFridgePal Front Page</title>
-                <meta name='viewport' content='width=device-width, initial-scale=1'>
-                <link rel="stylesheet" type="text/css" href="styles.css"/>
-        </head>
-        <body>
-                <script src = "updateFridge.js"></script>
-                <h1>My fridge</h1>
-                <button><a href="login.html">login</a></button>
-                <button><a href="fridges.html">fridges</a></button>
-                <div class = "fridge" id = "fridge">
-                        <table>
-                                <tr>
-                                        <th>Food</th>
-                                        <th>Purchase Date</th>
-                                        <th>Opened Date</th>
-                                        <th>Expiration Date</th>
-                                </tr>
-                                <tr>
-                                        <td>chicken</td>
-                                        <td>2/21</td>
-                                        <td>2/22</td>
-                                        <td>3/1</td>
-                                </tr>
-                        </table>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyFridgePal</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="updateFridge.js"></script>
+</head>
+<body>
 
-                <form onsubmit="event.preventDefault(); updateFridge();">
-                        <label for="row">Row Index (starting from 1):</label>
-                        <input type="number" id="row" name="row" min="1" required><br><br>
-                        
-                        <label for="column">Column Index (starting from 0):</label>
-                        <input type="number" id="column" name="column" min="0" required><br><br>
-                        
-                        <label for="newValue">New Value:</label>
-                        <input type="text" id="newValue" name="newValue" required><br><br>
-                        
-                        <input type="submit" value="Update Table">
-                    </form>
-        </body>
+    <h1>My Fridge</h1>
+    <button><a href="login.html">Login</a></button>
+    <button><a href="fridges.html">Fridges</a></button>
+
+    <div class="fridge" id="fridge">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Food</th>
+                    <th>Purchase Date</th>
+                    <th>Opened Date</th>
+                    <th>Expiration Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Edit Fridge Item</h2>
+    <form onsubmit="event.preventDefault(); editFridge();">
+        <label for="row">Food #:</label>
+        <input type="number" id="row" name="row" min="1" required><br><br>
+        
+        <label for="column">Info #:</label>
+        <input type="number" id="column" name="column" min="1" required><br><br>
+        
+        <label for="newValue">New input:</label>
+        <input type="text" id="newValue" name="newValue" required><br><br>
+        
+        <input type="submit" value="Edit Fridge">
+    </form>
+
+    <h2>Add Food Item</h2>
+    <form onsubmit="event.preventDefault(); addFood();">
+        <label for="name">Food Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="purchaseDate">Purchase Date:</label>
+        <input type="text" id="purchaseDate" name="purchaseDate" placeholder="YYYY-MM-DD"><br><br>
+
+        <label for="openedDate">Opened Date:</label>
+        <input type="text" id="openedDate" name="openedDate" placeholder="YYYY-MM-DD"><br><br>
+
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" name="expirationDate" placeholder="YYYY-MM-DD"><br><br>
+        
+        <input type="submit" value="Add Food">
+    </form>
+
+</body>
 </html>
