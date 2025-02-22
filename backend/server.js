@@ -1,46 +1,46 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require("dotenv").config();
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const app = express();
-app.use(express.json());
-app.use(cors());
+app.use(express.json()); // Allows parsing JSON requests
+app.use(cors()); // Allows frontend requests
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error(err));
 
 const UserSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-});
-const User = mongoose.model("User", UserSchema);
-
-// Create User
-app.post("/users", async (req, res) => {
-  const user = new User(req.body);
-  await user.save();
-  res.json(user);
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
 });
 
-// Get Users
-app.get("/users", async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-});
+const User = mongoose.model('User', UserSchema);
 
-// Update User
-app.put("/users/:id", async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.json(user);
-});
+app.post('/signup', async (req, res) => {
+  try {
+    const { username, password } = req.body;
 
-// Delete User
-app.delete("/users/:id", async (req, res) => {
-  await User.findByIdAndDelete(req.params.id);
-  res.json({ message: "User deleted" });
-});
+    // Check if user already exists
+    const existingUser = await User.findOne({ username });
+    if (existingUser) return res.status(400).json({ message: 'User already exists' });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Save user to MongoDB
+    const newUser = new User({ username, password: hashedPassword });
+    await newUser.save();
+
+    res.status(201).json({ message: 'User created successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
