@@ -1,46 +1,25 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require("dotenv").config();
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://dbUser:HkL67mVXTSwL7jki@myfridgepal.ngs96.mongodb.net/?retryWrites=true&w=majority&appName=MyFridgePal";
 
-const app = express();
-app.use(express.json());
-app.use(cors());
-
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 });
 
-const UserSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-});
-const User = mongoose.model("User", UserSchema);
-
-// Create User
-app.post("/users", async (req, res) => {
-  const user = new User(req.body);
-  await user.save();
-  res.json(user);
-});
-
-// Get Users
-app.get("/users", async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-});
-
-// Update User
-app.put("/users/:id", async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.json(user);
-});
-
-// Delete User
-app.delete("/users/:id", async (req, res) => {
-  await User.findByIdAndDelete(req.params.id);
-  res.json({ message: "User deleted" });
-});
-
-app.listen(5000, () => console.log("Server running on port 5000"));
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);

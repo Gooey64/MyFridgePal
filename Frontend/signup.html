@@ -1,4 +1,63 @@
-<!doctype html>
-<html>
-        <h1>Signing up</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <title>MyFridgePal Login</title>
+</head>
+<body>
+    <main>
+      <h1>MyFridgePal</h1>
+      <button><a href="frontpage.html">home</a></button>
+      <div class="login">
+        <form action="login.html" id="signupForm">
+          <label>
+            Username<br />
+            <input type="text" 
+                   id="username-input"
+                   name="username"
+                   maxlength="40"
+                   required />
+          </label>
+          <label>
+            Password<br />
+            <input type="text" 
+                   id="password-input"
+                   name="password"
+                   maxlength="40"
+                   minlength="8"
+                   required />
+          </label>
+          <label>
+                Confirm Password<br />
+                <input type="text" 
+                       id="password-confirm"
+                       name="password-confirm"
+                       maxlength="40"
+                       minlength="8"
+                       required />
+              </label>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+      <script>
+        document.getElementById("signupForm").addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                const response = await fetch('http://localhost:3000/signup', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+                alert(data.message);
+        })
+      </script>
+    </main>
+</body>
 </html>
