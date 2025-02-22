@@ -7,14 +7,14 @@ function editFridge() {
         var rows = table.rows;
         
         if (row >= 0 && row < rows.length) { // Ensure the row exists
-            var cell = rows[row].cells[column]; // Get the specific cell
-            if (cell) { // Ensure the cell exists
-                cell.innerHTML = newValue; // Update the cell content
-            } else {
-                alert("Invalid column index.");
-            }
+                var cell = rows[row].cells[column]; // Get the specific cell
+                if (cell) { // Ensure the cell exists
+                        cell.innerHTML = newValue; // Update the cell content
+                } else {
+                        alert("Invalid column index.");
+                }
         } else {
-            alert("Invalid row index.");
+                alert("Invalid row index.");
         }
 
         document.getElementById("row").value = '';
