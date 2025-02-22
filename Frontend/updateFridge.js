@@ -1,6 +1,6 @@
 function editFridge() {
         var row = document.getElementById("row").value - 1; // Adjusting for 1-based index
-        var column = document.getElementById("column").value + 1;
+        var column = document.getElementById("column").value;
         var newValue = document.getElementById("newValue").value;
         
         var table = document.getElementById("fridge").getElementsByTagName('tbody')[0]; // Get tbody
@@ -16,6 +16,10 @@ function editFridge() {
         } else {
             alert("Invalid row index.");
         }
+
+        document.getElementById("row").value = '';
+        document.getElementById("column").value = '';
+        document.getElementById("newValue").value = '';
 }
     
 function addFood() {
