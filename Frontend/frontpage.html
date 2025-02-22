@@ -6,10 +6,11 @@
                 <link rel="stylesheet" type="text/css" href="styles.css"/>
         </head>
         <body>
+                <script src = "updateFridge.js"></script>
                 <h1>My fridge</h1>
                 <button><a href="login.html">login</a></button>
                 <button><a href="fridges.html">fridges</a></button>
-                <div class = "fridge">
+                <div class = "fridge" id = "fridge">
                         <table>
                                 <tr>
                                         <th>Food</th>
@@ -25,5 +26,18 @@
                                 </tr>
                         </table>
                 </div>
+
+                <form onsubmit="event.preventDefault(); updateFridge();">
+                        <label for="row">Row Index (starting from 1):</label>
+                        <input type="number" id="row" name="row" min="1" required><br><br>
+                        
+                        <label for="column">Column Index (starting from 0):</label>
+                        <input type="number" id="column" name="column" min="0" required><br><br>
+                        
+                        <label for="newValue">New Value:</label>
+                        <input type="text" id="newValue" name="newValue" required><br><br>
+                        
+                        <input type="submit" value="Update Table">
+                    </form>
         </body>
 </html>

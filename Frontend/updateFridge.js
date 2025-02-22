@@ -1,16 +1,24 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Table</title>
-    <script>
-        function updateTable() {
-            var row = document.getElementById("row").value;
-            var column = document.getElementById("column").value;
-            var newValue = document.getElementById("newValue").value;
-            
-            var table = document.getElementById("dataTable");
-            var cell = table.rows[row].cells[column];
-            cell.innerHTML = newValue;
-        }
-    </script>
-</head>
+function updateFridge() {
+        var row = document.getElementById("row").value;
+        var column = document.getElementById("column").value;
+        var newValue = document.getElementById("newValue").value;
+        
+        var table = document.getElementById("fridge");
+        var cell = table.rows[row].cells[column];
+        cell.innerHTML = newValue;
+}
+
+function addFood() {
+        var table = document.getElementById("fridge");
+        var newRow = table.insertRow();
+        
+        var name = newRow.insertCell(0);
+        var purchaseDate = newRow.insertCell(1);
+        var openedDate = newRow.insertCell(2);
+        var expirationDate = newRow.insertCell(3);
+        
+        name.innerHTML = document.getElementById("name").value;
+        purchaseDate.innerHTML = document.getElementById("purchaseDate").value;
+        openedDate.innerHTML = document.getElementById("openedDate").value;
+        expirationDate.innerHTML = document.getElementById("expirationDate").value;
+}
