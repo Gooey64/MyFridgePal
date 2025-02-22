@@ -45,8 +45,8 @@
         document.getElementById("signupForm").addEventListener('submit', async (event) => {
                 event.preventDefault();
 
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
+                const username = document.getElementById('username-input').value;
+                const password = document.getElementById('password-confirm').value;
 
                 const response = await fetch('http://localhost:3000/signup', {
                         method: 'POST',
