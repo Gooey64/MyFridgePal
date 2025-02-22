@@ -4,6 +4,7 @@
 /* General styles */
 html {
     color: black;
+    margin: 30px;
 }
 
 .login label {
@@ -11,11 +12,10 @@ html {
     margin-bottom: 2%;
 }
 
-.fridge {
+div {
         background-color: rgb(153, 196, 245);
         color: black;
         border: 2px solid black;
-        margin: 20px;
         padding: 20px;
 }
 
