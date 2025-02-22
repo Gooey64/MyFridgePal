@@ -11,7 +11,7 @@
       <h1>MyFridgePal</h1>
       <button><a href="frontpage.html">home</a></button>
       <div class="login">
-        <form action="frontpage.html">
+        <form action="frontpage.html" id="loginform">
           <label>
             Username<br />
             <input type="text" 
@@ -35,6 +35,13 @@
           <p>Don't have an account yet?</p>
           <button><a href = "signup.html">Sign up</a></button>
         </div>
+        <script>
+          document.getElementById("loginForm").addEventListener('submit', async (event) => 
+          {
+            event.preventDefault();
+            
+          });
+        </script>
       </div>
     </main>
 </body>
