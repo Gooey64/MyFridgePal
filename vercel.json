@@ -8,8 +8,12 @@
         ],
         "routes": [
           {
+            "src": "/",
+            "dest": "/Frontend/login.html"
+          },
+          {
             "src": "/(.*)",
-            "dest": "Frontend/login.html"
+            "dest": "/Frontend/$1"
           }
         ]
       }

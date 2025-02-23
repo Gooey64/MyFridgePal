@@ -4,6 +4,7 @@ const uri = process.env.MONGODB_URI;
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
+const path = require('path');
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -54,11 +55,11 @@ app.use(session({
   }
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Frontend')));
 
 app.get('/', (req, res) => {
   res.send('Welcome to My Website!');
-  res.sendFile(Path2D.join(__dirname, 'Frontend', 'login.html'));
+  res.sendFile(path.join(__dirname, 'Frontend', 'login.html'));
 });
 
 app.post("/signup", async (req, res) => {
