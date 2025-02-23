@@ -7,9 +7,18 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://localhost:8080', // Allow requests from front-end port
+  origin: '*', // Allow requests from front-end port
+  methods: "GET, POST",
+  allowedHeaders: ["Content-Type"],
+  credentials: true
 }));
 
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -35,6 +44,7 @@ async function connectDB() {
 app.post("/signup", async (req, res) => {
   const {username, password } = req.body;
 
+  const db = app.locals.db;
   const usersCollection = db.collection("Users");
   const existingUser = await usersCollection.findOne({ username });
 
@@ -62,6 +72,6 @@ process.on('SIGINT', async () => {
 
 connectDB().then(() => {
   app.listen(port, () => { 
-    console.log(`Server is running on https://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
   });
 });
