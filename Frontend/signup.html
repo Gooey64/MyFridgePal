@@ -68,10 +68,11 @@
                 const data = await response.json();
 
                 if (data.success) {
-                        console.log("User created successfully");
+                        alert("Your account was created! Please log in on the login page.");
+                        window.location.replace("login.html")
                 }
                 else {
-                        console.log("User not created successfully :(");
+                        alert("That username is already taken.");
                 }
                 
         });

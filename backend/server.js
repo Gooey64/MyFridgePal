@@ -62,6 +62,25 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const db = app.locals.db;
+  const usersCollection = db.collection("Users");
+  
+  const existingUser = await usersCollection.findOne({ username });
+
+  if (!existingUser) { 
+    return res.json({ success: false, message: "No account exists with that username." });
+  }
+
+  if (existingUser.password !== password) {
+    return res.json({ success: false, message: "Incorrect password." });
+  }
+
+  return res.json({ success: true, message: "Welcome back!" });
+});
+
 
 process.on('SIGINT', async () => {
   console.log("Closing MongoDB connection...");
