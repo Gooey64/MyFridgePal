@@ -94,22 +94,22 @@ app.post("/login", async (req, res) => {
     return res.json({ success: false, message: "Incorrect password." });
   }
 
-  req.session.user = { username: existingUser.username, id: existingUser._id};
+  // req.session.user = { username: existingUser.username, id: existingUser._id};
   return res.json({ success: true, message: "Successful Login" });
 });
 
-app.get("/profile", (req, res) => {
-  if (!req.session.user) {
-      return res.status(401).json({ message: "Not logged in" });
-  }
-  res.json({ user: req.session.user });
-});
+// app.get("/profile", (req, res) => {
+//   if (!req.session.user) {
+//       return res.status(401).json({ message: "Not logged in" });
+//   }
+//   res.json({ user: req.session.user });
+// });
 
-app.post("/logout", (req, res) => {
-  req.session.destroy(() => {
-      res.json({ message: "Logged out successfully" });
-  });
-});
+// app.post("/logout", (req, res) => {
+//   req.session.destroy(() => {
+//       res.json({ message: "Logged out successfully" });
+//   });
+// });
 
 
 process.on('SIGINT', async () => {
