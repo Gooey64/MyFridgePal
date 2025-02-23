@@ -1,34 +1,34 @@
-let currentSlide = 0;
+let currSlide = 0;
 
 // Move carousel slide
 function moveSlide(direction) {
         const carousel = document.getElementById('carousel');
         const totalSlides = document.getElementsByClassName('carousel-item').length;
-        currentSlide += direction;
+        currSlide += direction;
 
         // Ensure the slide index stays within bounds
-        if (currentSlide < 0) {
-                currentSlide = totalSlides - 1; // Go to last slide
+        if (currSlide < 0) {
+                currSlide = totalSlides - 1; // Go to last slide
         }
-        if (currentSlide >= totalSlides) {
-                currentSlide = 0; // Go to first slide
+        if (currSlide >= totalSlides) {
+                currSlide = 0; // Go to first slide
         }
 
         // Move carousel to the correct slide
-        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        carousel.style.transform = `translateX(-${currSlide * 100}%)`;
 }
 
 // Move carousel to a specific slide based on the fridge selected
-function moveToSlide(slideNumber) {
+function moveToSlide(slideNum) {
         const carousel = document.getElementById("carousel");
         const totalSlides = document.getElementsByClassName('carousel-item').length;
 
-        if (slideNumber < 0 || slideNumber >= totalSlides) return;
+        if (slideNum < 0 || slideNum >= totalSlides) return;
 
-        currentSlide = slideNumber;
+        currSlide = slideNum;
 
         // Move carousel to the correct slide
-        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        carousel.style.transform = `translateX(-${currSlide * 100}%)`;
 }
 
 // Edit a specific fridge item
@@ -37,17 +37,18 @@ function editFridge() {
         const column = document.getElementById("column").value;
         const newValue = document.getElementById("newValue").value;
 
-        const fridgeNumber = document.getElementById("fridgeNumber").value;
-        const table = document.getElementById(`fridge-${fridgeNumber}`).querySelector('table')
-                .getElementsByTagName('tbody')[0]; // Get tbody
-        const rows = table.rows;
+        const fridgeNum = document.getElementById("fridgeNum").value;
+        const fridge = document.getElementById(`fridge-${fridgeNum}`)
+                       .querySelector('table')
+                       .getElementsByTagName('tbody')[0]; // Get tbody
+        const rows = fridge.rows;
 
         if (row >= 0 && row < rows.length) { // Ensure the row exists
                 const cell = rows[row].cells[column]; // Get the specific cell
                 if (cell) { // Ensure the cell exists
-                cell.innerHTML = newValue; // Update the cell content
+                        cell.innerHTML = newValue; // Update the cell content
                 } else {
-                alert("Invalid column index.");
+                        alert("Invalid column index.");
                 }
         } else {
                 alert("Invalid row index.");
@@ -61,28 +62,29 @@ function editFridge() {
 
 // Add a food item to the selected fridge
 function addFood() {
-        const fridgeNumber = document.getElementById("fridgeNumber").value;
-        const table = document.getElementById(`fridge-${fridgeNumber}`).querySelector('table')
-                .getElementsByTagName('tbody')[0]; // Get tbody
-        const newRow = table.insertRow(); // Insert a new row into the tbody
+        const fridgeNum = document.getElementById("fridgeNum").value;
+        const fridge = document.getElementById(`fridge-${fridgeNum}`)
+                       .querySelector('table')
+                       .getElementsByTagName('tbody')[0]; // Get tbody
+        const newRow = fridge.insertRow(); // Insert a new row into the tbody
 
         // Create cells in the new row
         const number = newRow.insertCell(0);
         const name = newRow.insertCell(1);
         const purchaseDate = newRow.insertCell(2);
         const openedDate = newRow.insertCell(3);
-        const expirationDate = newRow.insertCell(4);
+        const expirDate = newRow.insertCell(4);
 
         // Set cell content with values from input fields
-        number.innerHTML = table.rows.length;
+        number.innerHTML = fridge.rows.length;
         name.innerHTML = document.getElementById("name").value;
         purchaseDate.innerHTML = document.getElementById("purchaseDate").value;
         openedDate.innerHTML = document.getElementById("openedDate").value;
-        expirationDate.innerHTML = document.getElementById("expirationDate").value;
+        expirDate.innerHTML = document.getElementById("expirDate").value;
 
         // Clear the form inputs
         document.getElementById("name").value = '';
         document.getElementById("purchaseDate").value = '';
         document.getElementById("openedDate").value = '';
-        document.getElementById("expirationDate").value = '';
+        document.getElementById("expirDate").value = '';
 }

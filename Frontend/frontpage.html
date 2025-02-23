@@ -1,125 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset = "UTF-8">
+        <meta name = "viewport"
+              content = "width = device-width, initial-scale = 1">
         <title>MyFridgePal</title>
-        <link rel="stylesheet" href="styles.css"/>
-        <script src="updateFridge.js"></script>
+        <link rel = "stylesheet" href = "styles.css"/>
+        <script src = "updateFridge.js"></script>
 </head>
 <body>
 
         <h1>My Fridge</h1>
-        <button><a href="login.html">Login</a></button>
-        <button><a href="fridges.html">Fridges</a></button>
-        <select id="fridgeNumber" name="fridgeNumber" onchange="moveToSlide(value - 1)">
-                <option value="1">Fridge</option>
-                <option value="2">Freezer</option>
-                <option value="3">Pantry</option>
+        <button><a href = "login.html">Login</a></button>
+        <button><a href = "fridges.html">Fridges</a></button>
+        <select id = "fridgeNum"
+                name = "fridgeNum"
+                onchange = "moveToSlide(value - 1)">
+                <option value = "1">Fridge</option>
+                <option value = "2">Freezer</option>
+                <option value = "3">Pantry</option>
         </select><br><br>
-        <div class="carousel-container">
-                <div class="carousel" id="carousel">
+        <div class = "carousel-container">
+                <div class = "carousel" id = "carousel">
                         <!-- First Table -->
-                        <div class="carousel-item" id="fridge-1">
+                        <div class = "carousel-item" id = "fridge-1">
                                 <div class = "fridge">
-                                <h2>Fridge</h2>
-                                <table>
-                                <thead>
-                                        <tr>
-                                        <th>#</th>
-                                        <th>Food</th>
-                                        <th>Purchase Date</th>
-                                        <th>Opened Date</th>
-                                        <th>Expiration Date</th>
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                        <!-- Rows will be added here dynamically -->
-                                </tbody>
-                                </table>
+                                        <h2>Fridge</h2>
+                                        <table>
+                                        <thead>
+                                                <tr>
+                                                <th>#</th>
+                                                <th>Food</th>
+                                                <th>Purchase Date</th>
+                                                <th>Opened Date</th>
+                                                <th>Expiration Date</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <!-- Rows will be added here dynamically -->
+                                        </tbody>
+                                        </table>
                                 </div>
                         </div>
-                        <div class="carousel-item" id="fridge-2">
+                        <div class = "carousel-item" id = "fridge-2">
                                 <div class = "fridge">
-                                <h2>Freezer</h2>
-                                <table>
-                                <thead>
-                                        <tr>
-                                        <th>#</th>
-                                        <th>Food</th>
-                                        <th>Purchase Date</th>
-                                        <th>Opened Date</th>
-                                        <th>Expiration Date</th>
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                        <!-- Rows will be added here dynamically -->
-                                </tbody>
-                                </table>
+                                        <h2>Freezer</h2>
+                                        <table>
+                                        <thead>
+                                                <tr>
+                                                <th>#</th>
+                                                <th>Food</th>
+                                                <th>Purchase Date</th>
+                                                <th>Opened Date</th>
+                                                <th>Expiration Date</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <!-- Rows will be added here dynamically -->
+                                        </tbody>
+                                        </table>
                                 </div>
                         </div>
-                        <div class="carousel-item" id="fridge-3">
+                        <div class = "carousel-item" id = "fridge-3">
                                 <div class = "fridge">
-                                <h2>Pantry</h2>
-                                <table>
-                                <thead>
-                                        <tr>
-                                        <th>#</th>
-                                        <th>Food</th>
-                                        <th>Purchase Date</th>
-                                        <th>Opened Date</th>
-                                        <th>Expiration Date</th>
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                        <!-- Rows will be added here dynamically -->
-                                </tbody>
-                                </table>
+                                        <h2>Pantry</h2>
+                                        <table>
+                                        <thead>
+                                                <tr>
+                                                <th>#</th>
+                                                <th>Food</th>
+                                                <th>Purchase Date</th>
+                                                <th>Opened Date</th>
+                                                <th>Expiration Date</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <!-- Rows will be added here dynamically -->
+                                        </tbody>
+                                        </table>
                                 </div>
                         </div>
                 </div>
         </div>
 
-        <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        <button class = "carousel-btn prev"
+                onclick = "moveSlide(-1)">&#10094;</button>
+        <button class = "carousel-btn next"
+                onclick = "moveSlide(1)">&#10095;</button>
 
-        <div class = "form">
+        <div class  =  "form">
         <h2>Edit Fridge Item</h2>
         
-                <form onsubmit="event.preventDefault(); editFridge();">
-                        <label for="row">Food #:</label>
-                        <input type="number" id="row" name="row" min="1" required><br><br>
+                <form onsubmit = "event.preventDefault(); editFridge();">
+                        <label for = "row">Food #:</label>
+                        <input type = "number" id = "row" name = "row" min = "1"
+                               required><br><br>
                         
-                        <label for="column">Info #:</label>
-                        <input type="number" id="column" name="column" min="1" max = "4" required><br><br>
+                        <label for = "column">Info #:</label>
+                        <input type = "number" id = "column" name = "column"
+                               min = "1" max  =  "4" required><br><br>
                         
-                        <label for="newValue">New input:</label>
-                        <input type="text" id="newValue" name="newValue" required><br><br>
+                        <label for = "newValue">New input:</label>
+                        <input type = "text" id = "newValue" name = "newValue"
+                               required><br><br>
 
-                        <label for="fridgeNumber">Select storage:</label> 
+                        <label for = "fridgeNum">Select storage:</label> 
                         
-                        <input type="submit" value="Edit Fridge">
+                        <input type = "submit" value = "Edit Fridge">
                 </form>
         </div>
 
         <div class = "form">
         <h2>Add Food Item</h2>
-                <form onsubmit="event.preventDefault(); addFood();">
-                        <label for="name">Food Name:</label>
-                        <input type="text" id="name" name="name" required><br><br>
+                <form onsubmit = "event.preventDefault(); addFood();">
+                        <label for = "name">Food Name:</label>
+                        <input type = "text" id = "name" name = "name" required>
+                        <br><br>
                         
-                        <label for="purchaseDate">Purchase Date:</label>
-                        <input type="text" id="purchaseDate" name="purchaseDate" placeholder="YYYY-MM-DD"><br><br>
+                        <label for = "purchaseDate">Purchase Date:</label>
+                        <input type = "text"
+                               id = "purchaseDate"
+                               name = "purchaseDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
 
-                        <label for="openedDate">Opened Date:</label>
-                        <input type="text" id="openedDate" name="openedDate" placeholder="YYYY-MM-DD"><br><br>
+                        <label for = "openedDate">Opened Date:</label>
+                        <input type = "text"
+                               id = "openedDate"
+                               name = "openedDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
 
-                        <label for="expirationDate">Expiration Date:</label>
-                        <input type="text" id="expirationDate" name="expirationDate" placeholder="YYYY-MM-DD"><br><br>
+                        <label for = "expirDate">Expiration Date:</label>
+                        <input type = "text"
+                               id = "expirDate"
+                               name = "expirDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
 
-                        <label for="fridgeNumber">Select storage:</label>
+                        <label for = "fridgeNum">Select storage:</label>
                         
-                        <input type="submit" value="Add Food">
+                        <input type = "submit" value = "Add Food">
                 </form>
         </div>
 
