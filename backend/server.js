@@ -54,8 +54,11 @@ app.use(session({
   }
 }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => {
   res.send('Welcome to My Website!');
+  res.sendFile(Path2D.join(__dirname, 'Frontend', 'login.html'));
 });
 
 app.post("/signup", async (req, res) => {
