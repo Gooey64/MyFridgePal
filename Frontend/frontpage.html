@@ -15,7 +15,7 @@
 
         <select id = "fridgeNum"
                 name = "fridgeNum"
-                onchange = "moveToSlide(value - 1)">
+                onchange = "selectSlide(value - 1)">
                 <option value = "1">Fridge</option>
                 <option value = "2">Freezer</option>
                 <option value = "3">Pantry</option>
@@ -30,11 +30,11 @@
                                         <table>
                                         <thead>
                                                 <tr>
-                                                <th>#</th>
-                                                <th>Food</th>
-                                                <th>Purchase Date</th>
-                                                <th>Opened Date</th>
-                                                <th>Expiration Date</th>
+                                                <th onclick="sortTable(1, 0, true)">#</th>
+                                                <th onclick="sortTable(1, 1, true)">Food</th>
+                                                <th onclick="sortTable(1, 2, true)">Purchase Date</th>
+                                                <th onclick="sortTable(1, 3, true)">Opened Date</th>
+                                                <th onclick="sortTable(1, 4, true)">Expiration Date</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
@@ -49,11 +49,11 @@
                                         <table>
                                         <thead>
                                                 <tr>
-                                                <th>#</th>
-                                                <th>Food</th>
-                                                <th>Purchase Date</th>
-                                                <th>Opened Date</th>
-                                                <th>Expiration Date</th>
+                                                <th onclick="sortTable(2, 0, true)">#</th>
+                                                <th onclick="sortTable(2, 1, true)">Food</th>
+                                                <th onclick="sortTable(2, 2, true)">Purchase Date</th>
+                                                <th onclick="sortTable(2, 3, true)">Opened Date</th>
+                                                <th onclick="sortTable(2, 4, true)">Expiration Date</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
@@ -68,11 +68,11 @@
                                         <table>
                                         <thead>
                                                 <tr>
-                                                <th>#</th>
-                                                <th>Food</th>
-                                                <th>Purchase Date</th>
-                                                <th>Opened Date</th>
-                                                <th>Expiration Date</th>
+                                                <th onclick="sortTable(3, 0, true)">#</th>
+                                                <th onclick="sortTable(3, 1, true)">Food</th>
+                                                <th onclick="sortTable(3, 2, true)">Purchase Date</th>
+                                                <th onclick="sortTable(3, 3, true)">Opened Date</th>
+                                                <th onclick="sortTable(3, 4, true)">Expiration Date</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
