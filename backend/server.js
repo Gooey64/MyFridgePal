@@ -35,6 +35,10 @@ async function connectDB() {
   }
 }
 
+app.get('/', (req, res) => {
+  res.send('Welcome to My Website!');
+});
+
 app.post("/signup", async (req, res) => {
   const {username, password } = req.body;
 
