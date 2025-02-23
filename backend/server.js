@@ -1,6 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require("express");
-const uri = "mongodb+srv://dbUser:HkL67mVXTSwL7jki@myfridgepal.ngs96.mongodb.net/?retryWrites=true&w=majority&appName=MyFridgePal";
+const uri = process.env.MONGODB_URI;
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
