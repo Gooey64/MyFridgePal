@@ -30,6 +30,21 @@
         </script>
         <button id="logoutButton">Log out</button>
         <script>
+                fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                                'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username: 'example', password: 'password' }),
+                        credentials: 'same-origin',  // Ensure the cookie/session is sent
+                })
+                .then(response => response.json())
+                .then(data => {
+                        console.log(data);
+                })
+                .catch(error => {
+                        console.error('Error logging in:', error);
+                });
                 document.getElementById('logoutButton').addEventListener('click', function() {
                   fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/logout', {
                     method: 'POST',
