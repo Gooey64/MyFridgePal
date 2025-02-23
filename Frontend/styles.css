@@ -3,6 +3,10 @@ html {
     color: black;
 }
 
+h1 {
+    text-align: center;
+}
+
 .login label {
     display: block;
     margin-bottom: 2%;
