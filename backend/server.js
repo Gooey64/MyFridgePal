@@ -49,7 +49,7 @@ app.use(session({
       collectionName: "sessions" // (optional) Name of the session collection
   }),
   cookie: {
-      secure: true, // Set to true if using HTTPS
+      secure: false, // Set to true if using HTTPS
       httpOnly: true, // Prevents access from JavaScript (more secure)
       maxAge: 1000 * 60 * 60 * 24 // Session lasts for 1 day
   }
