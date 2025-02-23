@@ -58,7 +58,6 @@ app.use(session({
 app.use(express.static(path.join(__dirname, '../Frontend')));
 
 app.get('/', (req, res) => {
-  res.send('Welcome to My Website!');
   res.sendFile(path.join(__dirname, '..', 'Frontend', 'login.html'));
 });
 
