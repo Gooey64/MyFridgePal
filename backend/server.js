@@ -38,20 +38,20 @@ async function connectDB() {
   }
 }
 
-// app.use(session({
-//   secret: "abcdefghijklmnopqrstuvwxyz", // Change this to a strong, random string
-//   resave: false, // Don't save if nothing changed
-//   saveUninitialized: false, // Don't create session until something is stored
-//   store: MongoStore.create({
-//       mongoUrl: process.env.MONGO_URI, // Your MongoDB connection
-//       collectionName: "sessions" // (optional) Name of the session collection
-//   }),
-//   cookie: {
-//       secure: true, // Set to true if using HTTPS
-//       httpOnly: true, // Prevents access from JavaScript (more secure)
-//       maxAge: 1000 * 60 * 60 * 24 // Session lasts for 1 day
-//   }
-// }));
+app.use(session({
+  secret: "abcdefghijklmnopqrstuvwxyz", // Change this to a strong, random string
+  resave: false, // Don't save if nothing changed
+  saveUninitialized: false, // Don't create session until something is stored
+  store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI, // Your MongoDB connection
+      collectionName: "sessions" // (optional) Name of the session collection
+  }),
+  cookie: {
+      secure: true, // Set to true if using HTTPS
+      httpOnly: true, // Prevents access from JavaScript (more secure)
+      maxAge: 1000 * 60 * 60 * 24 // Session lasts for 1 day
+  }
+}));
 
 app.get('/', (req, res) => {
   res.send('Welcome to My Website!');
