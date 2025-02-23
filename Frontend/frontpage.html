@@ -33,14 +33,6 @@
         </script>
         <button><a href = "fridges.html">Fridges</a></button>
 
-        <select id = "fridgeNum"
-                name = "fridgeNum"
-                onchange = "selectSlide(value - 1)">
-                <option value = "1">Fridge</option>
-                <option value = "2">Freezer</option>
-                <option value = "3">Pantry</option>
-        </select><br><br>
-
         <div class = "carousel-container">
                 <div class = "carousel" id = "carousel">
                         <!-- First Table -->
@@ -113,6 +105,13 @@
                 onclick = "moveSlide(1)">&#10095;</button>
 
         <div class = "form">
+                <select id = "fridgeNum"
+                        name = "fridgeNum"
+                        onchange = "selectSlide(value - 1)">
+                        <option value = "1">Fridge</option>
+                        <option value = "2">Freezer</option>
+                        <option value = "3">Pantry</option>
+                </select><br><br>
                 <h2>Add Food Item</h2>
                 <form onsubmit = "event.preventDefault(); addFood();">
                         <label for = "name">Food Name:</label>
@@ -121,44 +120,42 @@
                         
                         <label for = "purchaseDate">Purchase Date:</label>
                         <input type = "text"
-                                id = "purchaseDate"
-                                name = "purchaseDate"
-                                placeholder = "YYYY-MM-DD"><br><br>
+                               id = "purchaseDate"
+                               name = "purchaseDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
 
                         <label for = "openedDate">Opened Date:</label>
                         <input type = "text"
-                                id = "openedDate"
-                                name = "openedDate"
-                                placeholder = "YYYY-MM-DD"><br><br>
+                               id = "openedDate"
+                               name = "openedDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
 
                         <label for = "expirDate">Expiration Date:</label>
                         <input type = "text"
-                                id = "expirDate"
-                                name = "expirDate"
-                                placeholder = "YYYY-MM-DD"><br><br>
+                               id = "expirDate"
+                               name = "expirDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
 
-                        <label for = "fridgeNum">Select storage:</label>
-                        
                         <input type = "submit" value = "Add Food">
                 </form>
-        </div>
-        <div class = "form">
                 <h2>Edit Food Item</h2>
                 <form onsubmit = "event.preventDefault(); editFood();">
                         <label for = "row">Food #:</label>
                         <input type = "number" id = "row" name = "row" min = "1"
                                required><br><br>
-                        
-                        <label for = "column">Info #:</label>
-                        <input type = "number" id = "column" name = "column"
-                               min = "2" max = "5" required><br><br>
-                        
-                        <label for = "newValue">New input:</label>
-                        <input type = "text" id = "newValue" name = "newValue"
-                               required><br><br>
 
-                        <label for = "fridgeNum">Select storage:</label> 
-                        
+                        <label for = "openedDateEdit">Opened Date:</label>
+                        <input type = "text"
+                               id = "openedDateEdit"
+                               name = "openedDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
+
+                        <label for = "expirDateEdit">Expiration Date:</label>
+                        <input type = "text"
+                               id = "expirDateEdit"
+                               name = "expirDate"
+                               placeholder = "YYYY-MM-DD"><br><br>
+
                         <input type = "submit" value = "Edit Food">
                 </form>
         </div>
