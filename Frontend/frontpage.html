@@ -11,38 +11,44 @@
 <body>
         <h1 id="userInfo"></h1> <!-- Here we will show username's fridges -->
         <script>
+                // First, send the login request
                 fetch('/login', {
-                        method: 'POST',
-                        headers: {
-                                'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ username: 'example', password: 'password' }),
-                        credentials: 'same-origin',  // Ensure the cookie/session is sent
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username: 'example', password: 'password' }),
+                    credentials: 'same-origin',  // Ensure the cookie/session is sent
                 })
                 .then(response => response.json())
                 .then(data => {
-                        console.log(data);
+                    console.log(data);
+                    if (data.success) {
+                        // If login is successful, fetch the username
+                        return fetch('/getUser', {
+                            method: 'GET',
+                            credentials: 'same-origin'
+                        });
+                    } else {
+                        throw new Error('Login failed');
+                    }
                 })
-                .catch(error => {
-                        console.error('Error logging in:', error);
-                });
-                // Fetch the username from the server
-                fetch('/getUser', { method: 'GET', credentials: 'same-origin'})
-                  .then(response => response.json())
-                  .then(data => {
-                console.log(data);
+                .then(response => response.json())
+                .then(data => {
                     const userInfo = document.getElementById('userInfo');
                     
                     if (data.username) {
-                      userInfo.innerHTML = `${data.username}'s Fridges`;
+                        userInfo.innerHTML = `${data.username}'s Fridges`;
                     } else {
-                      userInfo.innerHTML = "Guest's Fridges";
+                        userInfo.innerHTML = "Guest's Fridges";
                     }
-                  })
-                  .catch(error => {
-                    console.error('Error fetching username:', error);
-                  });
-        </script>
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const userInfo = document.getElementById('userInfo');
+                    userInfo.innerHTML = "Guest's Fridges";  // If login fails, show guest
+                });
+            </script>
         <button id="logoutButton">Log out</button>
         <script>
                 document.getElementById('logoutButton').addEventListener('click', function() {
