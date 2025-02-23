@@ -5,6 +5,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
 
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+
 app.use(express.json());
 app.use(cors({
   origin: '*', // Allow requests from front-end port
@@ -34,6 +37,21 @@ async function connectDB() {
     console.error("Error connecting to MongoDB:", err);
   }
 }
+
+app.use(session({
+  secret: "abcdefghijklmnopqrstuvwxyz", // Change this to a strong, random string
+  resave: false, // Don't save if nothing changed
+  saveUninitialized: false, // Don't create session until something is stored
+  store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI, // Your MongoDB connection
+      collectionName: "sessions" // (optional) Name of the session collection
+  }),
+  cookie: {
+      secure: true, // Set to true if using HTTPS
+      httpOnly: true, // Prevents access from JavaScript (more secure)
+      maxAge: 1000 * 60 * 60 * 24 // Session lasts for 1 day
+  }
+}));
 
 app.get('/', (req, res) => {
   res.send('Welcome to My Website!');
@@ -76,7 +94,21 @@ app.post("/login", async (req, res) => {
     return res.json({ success: false, message: "Incorrect password." });
   }
 
+  req.session.user = { username: existingUser.username, id: existingUser._id};
   return res.json({ success: true, message: "Successful Login" });
+});
+
+app.get("/profile", (req, res) => {
+  if (!req.session.user) {
+      return res.status(401).json({ message: "Not logged in" });
+  }
+  res.json({ user: req.session.user });
+});
+
+app.post("/logout", (req, res) => {
+  req.session.destroy(() => {
+      res.json({ message: "Logged out successfully" });
+  });
 });
 
 
