@@ -37,31 +37,30 @@ function addFood() {
 
 // Edit a specific fridge item
 function editFood() {
-        const row = document.getElementById("row").value - 1; // Adjust for 1-based index
-        const column = document.getElementById("column").value;
-        const newValue = document.getElementById("newValue").value;
+        const rowIndex = document.getElementById("row").value - 1; // Adjust for 1-based index
+        const openedDate = document.getElementById("openedDateEdit").value;
+        const expirDate = document.getElementById("expirDateEdit").value;
 
         const fridgeNum = document.getElementById("fridgeNum").value;
         const fridge = document.getElementById(`fridge-${fridgeNum}`)
                        .querySelector('table')
                        .getElementsByTagName('tbody')[0]; // Get tbody
-        const rows = fridge.rows;
+        const rows = fridge.rows; // Get all rows
+        const row = rows[rowIndex];
 
-        if (row >= 0 && row < rows.length) { // Ensure the row exists
-                const cell = rows[row].cells[column]; // Get the specific cell
-                if (cell) { // Ensure the cell exists
-                        cell.innerHTML = newValue; // Update the cell content
-                } else {
-                        alert("Invalid column index.");
-                }
-        } else {
-                alert("Invalid row index.");
+        if (openedDate.trim() !== "") {
+                const cell = row.cells[4];
+                cell.innerHTML = openedDate;
+        }
+        if (expirDate.trim() !== "") {
+                const cell = row.cells[5];
+                cell.innerHTML = expirDate;
         }
 
         // Clear form inputs
         document.getElementById("row").value = '';
-        document.getElementById("column").value = '';
-        document.getElementById("newValue").value = '';
+        document.getElementById("openedDateEdit").value = '';
+        document.getElementById("expirDateEdit").value = '';
 }
 
 function deleteFood(row) {
