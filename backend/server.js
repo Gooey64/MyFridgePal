@@ -55,7 +55,7 @@ app.use(session({
   }
 }));
 
-app.use(express.static(path.join(__dirname, 'Frontend')));
+app.use(express.static(path.join(__dirname, '../Frontend')));
 
 app.get('/', (req, res) => {
   res.send('Welcome to My Website!');
