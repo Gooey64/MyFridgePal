@@ -4,7 +4,6 @@
 /* General styles */
 html {
     color: black;
-    margin: 30px;
 }
 
 .login label {
@@ -12,7 +11,7 @@ html {
     margin-bottom: 2%;
 }
 
-div {
+.fridge {
         background-color: rgb(153, 196, 245);
         color: black;
         border: 2px solid black;
@@ -23,25 +22,79 @@ table {
         width: 100%;
         border-collapse: separate; /* Makes sure there's space between the cells */
         border-spacing: 10px; /* Adds space between table cells */
-    }
-    
-    th, td {
+}
+
+th, td {
         background-color: #f2f2f2;
         padding: 10px; /* Adds space inside each table cell */
         text-align: left;
         border: 1px solid #ddd; /* Adds borders for clarity */
-    }
-    
-    th {
+}
+
+th {
         font-weight: bold;
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 15px;
         padding-bottom: 15px;
-    }
-    
-    /* Space out rows */
-    tbody tr {
+}
+
+/* Space out rows */
+tbody tr {
         padding-top: 10px;
         padding-bottom: 10px;
-    }
+}
+
+/* Carousel container to control the layout of the carousel */
+.carousel-container {
+        position: relative;
+        max-width: 100%;
+        overflow: hidden; /* Hide anything outside the container */
+        margin: 20px auto;
+}
+
+/* The carousel itself that holds all the table items */
+.carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+/* Each table inside the carousel is a carousel-item */
+.carousel-item {
+        min-width: 100%; /* Each table takes up 100% of the width of the container */
+        box-sizing: border-box;
+}
+
+/* Carousel buttons for navigation */
+.carousel-btn {
+        /* position: absolute;
+        top: 50%; */
+        z-index: 1;
+        font-size: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+}
+
+.prev {
+        left: 0;
+}
+
+.next {
+        right: 0;
+}
+
+.carousel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+}
+
+.form {
+        width: 20%;
+        background-color: rgb(153, 196, 245);
+        color: black;
+        border: 2px solid black;
+        padding: 20px;
+        margin-bottom: 5px;
+}
