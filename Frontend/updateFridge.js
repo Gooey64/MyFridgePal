@@ -46,6 +46,10 @@ function editFood() {
                        .querySelector('table')
                        .getElementsByTagName('tbody')[0]; // Get tbody
         const rows = fridge.rows; // Get all rows
+        if (rowIndex < 0 || rowIndex >= rows.length) {
+                alert("Invalid food item row number.");
+                return;
+        }
         const row = rows[rowIndex];
 
         if (openedDate.trim() !== "") {
