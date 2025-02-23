@@ -116,8 +116,8 @@ function sortTable(fridgeNum, col, ascending) {
                 }
 
                 // Default: Compare as strings
-                        return ascending ? cellA.localeCompare(cellB) :
-                                           cellB.localeCompare(cellA);
+                return ascending ? cellA.localeCompare(cellB) :
+                                   cellB.localeCompare(cellA);
         });
     
         // Re-add sorted rows to the table
