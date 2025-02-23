@@ -10,5 +10,19 @@
         "engines": {
                 "node": "22.14.0",
                 "npm": "10.9.2"
-        }
+        },
+        "name": "myfridgepal",
+        "version": "1.0.0",
+        "description": "attempt to fix heroku error",
+        "main": "index.js",
+        "repository": {
+                "type": "git",
+                "url": "git+https://github.com/Gooey64/MyFridgePal.git"
+        },
+        "author": "Rebecca Lee",
+        "license": "ISC",
+        "bugs": {
+                "url": "https://github.com/Gooey64/MyFridgePal/issues"
+        },
+        "homepage": "https://github.com/Gooey64/MyFridgePal#readme"
 }
