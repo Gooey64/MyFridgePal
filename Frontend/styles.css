@@ -16,7 +16,7 @@ button {
     padding: 1%;
 }
 
-.login button:hover{
+button:hover{
     background-color: #E8D8D2;
 }
 
