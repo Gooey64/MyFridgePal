@@ -76,7 +76,7 @@ app.post("/login", async (req, res) => {
     return res.json({ success: false, message: "Incorrect password." });
   }
 
-  return res.json({ success: true, message: "Welcome back!" });
+  return res.json({ success: true, message: "Successful Login" });
 });
 
 
