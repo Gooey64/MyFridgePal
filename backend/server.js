@@ -39,7 +39,7 @@ async function connectDB() {
 }
 
 app.use(session({
-  secret: "abcdefghijklmnopqrstuvwxyz", // Change this to a strong, random string
+  secret: "xfk091nrbufpeghe235slw6oisl", // Change this to a strong, random string
   resave: false, // Don't save if nothing changed
   saveUninitialized: false, // Don't create session until something is stored
   store: MongoStore.create({
@@ -94,22 +94,22 @@ app.post("/login", async (req, res) => {
     return res.json({ success: false, message: "Incorrect password." });
   }
 
-  // req.session.user = { username: existingUser.username, id: existingUser._id};
+  req.session.user = { username: existingUser.username, id: existingUser._id};
   return res.json({ success: true, message: "Successful Login" });
 });
 
-// app.get("/profile", (req, res) => {
-//   if (!req.session.user) {
-//       return res.status(401).json({ message: "Not logged in" });
-//   }
-//   res.json({ user: req.session.user });
-// });
+app.get("/profile", (req, res) => {
+  if (!req.session.user) {
+      return res.status(401).json({ message: "Not logged in" });
+  }
+  res.json({ user: req.session.user });
+});
 
-// app.post("/logout", (req, res) => {
-//   req.session.destroy(() => {
-//       res.json({ message: "Logged out successfully" });
-//   });
-// });
+app.post("/logout", (req, res) => {
+  req.session.destroy(() => {
+      res.json({ message: "Logged out successfully" });
+  });
+});
 
 
 process.on('SIGINT', async () => {
