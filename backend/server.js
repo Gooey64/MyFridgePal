@@ -43,7 +43,7 @@ app.use(session({
   resave: false, // Don't save if nothing changed
   saveUninitialized: false, // Don't create session until something is stored
   store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI, // Your MongoDB connection
+      mongoUrl: uri, // Your MongoDB connection
       collectionName: "sessions" // (optional) Name of the session collection
   }),
   cookie: {
