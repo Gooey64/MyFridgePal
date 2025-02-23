@@ -47,7 +47,7 @@ function editFood() {
                        .getElementsByTagName('tbody')[0]; // Get tbody
         const rows = fridge.rows; // Get all rows
         if (rowIndex < 0 || rowIndex >= rows.length) {
-                alert("Invalid food item row number.");
+                alert("Invalid food item.");
                 return;
         }
         const row = rows[rowIndex];
