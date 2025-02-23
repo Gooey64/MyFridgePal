@@ -34,6 +34,7 @@
           <p>Don't have an account yet?</p>
           <button><a href = "signup.html">Sign up</a></button>
         </div>
+        
         <script>
           document.getElementById("loginForm").addEventListener('submit', async (event) => {
           event.preventDefault();
@@ -52,12 +53,12 @@
           const data = await response.json();
 
           if (data.success) {
-            alert(data.message); // Show success message
+            alert(data.message);
             console.log("Login successful!");
             window.location.replace("frontpage.html")
-            // Redirect or do something after login
+            
           } else {
-            alert(data.message); // Show error message
+            alert(data.message);
             console.log("Login failed:", data.message);
           }
           });
