@@ -10,7 +10,9 @@ const MongoStore = require("connect-mongo");
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://salty-island-68864-4dea84da182c.herokuapp.com', // Allow requests from front-end port
+  origin: ['https://salty-island-68864-4dea84da182c.herokuapp.com/logout',
+          'https://salty-island-68864-4dea84da182c.herokuapp.com/login',
+          'https://salty-island-68864-4dea84da182c.herokuapp.com/signup'],
   methods: "GET, POST",
   allowedHeaders: ["Content-Type"],
   credentials: true
