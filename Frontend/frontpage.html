@@ -12,7 +12,7 @@
         <h1 id="userInfo"></h1> <!-- Here we will show username's fridges -->
         <script>
                 // Fetch the username from the server
-                fetch('/getUser')
+                fetch('/getUser', { method: 'GET', credentials: 'same-origin'})
                   .then(response => response.json())
                   .then(data => {
                     const userInfo = document.getElementById('userInfo');
