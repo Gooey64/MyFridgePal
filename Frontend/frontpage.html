@@ -30,11 +30,12 @@
                                         <table>
                                         <thead>
                                                 <tr>
-                                                <th onclick="sortTable(1, 0, true)">#</th>
-                                                <th onclick="sortTable(1, 1, true)">Food</th>
-                                                <th onclick="sortTable(1, 2, true)">Purchase Date</th>
-                                                <th onclick="sortTable(1, 3, true)">Opened Date</th>
-                                                <th onclick="sortTable(1, 4, true)">Expiration Date</th>
+                                                <th width = 5px></th>
+                                                <th onclick="sortFridge(1, 0, true)">#</th>
+                                                <th onclick="sortFridge(1, 1, true)">Food</th>
+                                                <th onclick="sortFridge(1, 2, true)">Purchase Date</th>
+                                                <th onclick="sortFridge(1, 3, true)">Opened Date</th>
+                                                <th onclick="sortFridge(1, 4, true)">Expiration Date</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
@@ -49,11 +50,12 @@
                                         <table>
                                         <thead>
                                                 <tr>
-                                                <th onclick="sortTable(2, 0, true)">#</th>
-                                                <th onclick="sortTable(2, 1, true)">Food</th>
-                                                <th onclick="sortTable(2, 2, true)">Purchase Date</th>
-                                                <th onclick="sortTable(2, 3, true)">Opened Date</th>
-                                                <th onclick="sortTable(2, 4, true)">Expiration Date</th>
+                                                <th width = 5px></th>
+                                                <th onclick="sortFridge(2, 0, true)">#</th>
+                                                <th onclick="sortFridge(2, 1, true)">Food</th>
+                                                <th onclick="sortFridge(2, 2, true)">Purchase Date</th>
+                                                <th onclick="sortFridge(2, 3, true)">Opened Date</th>
+                                                <th onclick="sortFridge(2, 4, true)">Expiration Date</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
@@ -68,11 +70,12 @@
                                         <table>
                                         <thead>
                                                 <tr>
-                                                <th onclick="sortTable(3, 0, true)">#</th>
-                                                <th onclick="sortTable(3, 1, true)">Food</th>
-                                                <th onclick="sortTable(3, 2, true)">Purchase Date</th>
-                                                <th onclick="sortTable(3, 3, true)">Opened Date</th>
-                                                <th onclick="sortTable(3, 4, true)">Expiration Date</th>
+                                                <th width = 5px></th>
+                                                <th onclick="sortFridge(3, 0, true)">#</th>
+                                                <th onclick="sortFridge(3, 1, true)">Food</th>
+                                                <th onclick="sortFridge(3, 2, true)">Purchase Date</th>
+                                                <th onclick="sortFridge(3, 3, true)">Opened Date</th>
+                                                <th onclick="sortFridge(3, 4, true)">Expiration Date</th>
                                                 </tr>
                                         </thead>
                                         <tbody>
@@ -121,7 +124,7 @@
         </div>
         <div class = "form">
                 <h2>Edit Food Item</h2>
-                <form onsubmit = "event.preventDefault(); editFridge();">
+                <form onsubmit = "event.preventDefault(); editFood();">
                         <label for = "row">Food #:</label>
                         <input type = "number" id = "row" name = "row" min = "1"
                                required><br><br>

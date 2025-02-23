@@ -7,11 +7,12 @@ function addFood() {
         const newRow = fridge.insertRow(); // Insert a new row into the tbody
 
         // Create cells in the new row
-        const number = newRow.insertCell(0);
-        const name = newRow.insertCell(1);
-        const purchaseDate = newRow.insertCell(2);
-        const openedDate = newRow.insertCell(3);
-        const expirDate = newRow.insertCell(4);
+        const deleteBtn = newRow.insertCell(0);
+        const number = newRow.insertCell(1);
+        const name = newRow.insertCell(2);
+        const purchaseDate = newRow.insertCell(3);
+        const openedDate = newRow.insertCell(4);
+        const expirDate = newRow.insertCell(5);
 
         // Set cell content with values from input fields
         number.innerHTML = fridge.rows.length;
@@ -19,6 +20,12 @@ function addFood() {
         purchaseDate.innerHTML = document.getElementById("purchaseDate").value;
         openedDate.innerHTML = document.getElementById("openedDate").value;
         expirDate.innerHTML = document.getElementById("expirDate").value;
+
+        deleteBtn.innerHTML = document.createElement('button');
+        deleteBtn.textContent = 'X';
+        deleteBtn.style.color = 'white';
+        deleteBtn.style.backgroundColor = 'red';
+        deleteBtn.addEventListener('click', deleteFood(fridgeNum, number));
 
         // Clear the form inputs
         document.getElementById("name").value = '';
@@ -28,7 +35,7 @@ function addFood() {
 }
 
 // Edit a specific fridge item
-function editFridge() {
+function editFood() {
         const row = document.getElementById("row").value - 1; // Adjust for 1-based index
         const column = document.getElementById("column").value;
         const newValue = document.getElementById("newValue").value;
@@ -54,6 +61,14 @@ function editFridge() {
         document.getElementById("row").value = '';
         document.getElementById("column").value = '';
         document.getElementById("newValue").value = '';
+}
+
+function deleteFood(fridgeNum, rowNum) {
+        const fridge = document.getElementById(`fridge-${fridgeNum}`)
+                               .querySelector('table')
+                               .getElementsByTagName('tbody')[0];
+        const rows = fridge.rows;
+        rows.splice(rowNum, 1);
 }
 
 let currSlide = 0;
@@ -93,7 +108,7 @@ function selectSlide(slideNum) {
         carousel.style.transform = `translateX(-${currSlide * 100}%)`;
 }
 
-function sortTable(fridgeNum, col, ascending) {
+function sortFridge(fridgeNum, col, ascending) {
         const fridge = document.getElementById(`fridge-${fridgeNum}`)
                        .querySelector('table')
                        .getElementsByTagName('tbody')[0];
