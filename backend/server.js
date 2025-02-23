@@ -79,7 +79,12 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
+app.post("/login", cors({
+  origin: "https://salty-island-68864-4dea84da182c.herokuapp.com",
+  credentials: true,
+}),
+
+async (req, res) => {
   const { username, password } = req.body;
 
   const db = app.locals.db;
