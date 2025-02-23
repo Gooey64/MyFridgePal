@@ -11,24 +11,27 @@
       <h1>MyFridgePal</h1>
       <div class="login">
         <form action="frontpage.html" id="loginForm">
-          <label>
-            Username<br />
+          <div class = "loginFormItem">
+            <label>Username</label>
             <input type="text" 
                    id="username-input"
                    name="username"
                    maxlength="40"
                    required />
-          </label>
-          <label>
-            Password<br />
-            <input type="password" 
+          </div>
+          <div class = "loginFormItem">
+            <label>Password</label>
+          <input type="password" 
                    id="password-input"
                    name="password"
                    maxlength="40"
                    minlength="8"
                    required />
-          </label>
-          <button type="submit">Login</button>
+          </div>
+          <div class = "loginFormItem">
+            <button type="submit">Login</button>
+          </div>
+          
         </form>
         <div id="signup">
           <p>Don't have an account yet?</p>

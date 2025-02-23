@@ -5,11 +5,28 @@ html {
 
 h1 {
     text-align: center;
+    font-size: 50px;
 }
 
-.login label {
-    display: block;
+.login {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
     margin-bottom: 2%;
+    padding: 5%;
+    background-color: grey;
+}
+
+.loginFormItem {
+    display: block;
+    margin-bottom: 5%;
+}
+
+.login label{
+    display: block;
+    margin-bottom: 1%;
 }
 
 .fridge {
