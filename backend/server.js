@@ -107,12 +107,23 @@ async (req, res) => {
   return res.json({ success: true, message: "Successful Login" });
 });
 
-app.get("/profile", (req, res) => {
-  if (!req.session.user) {
-      return res.status(401).json({ message: "Not logged in" });
+app.get("/getUser", (req, res) => {
+  if (req.session.user) {
+    // If the user is logged in, send the username back
+    res.json({ username: req.session.user.username });
+  } else {
+    // If not logged in, return null or an empty response
+    res.json({ username: null });
   }
-  res.json({ user: req.session.user });
 });
+
+
+// app.get("/profile", (req, res) => {
+//   if (!req.session.user) {
+//       return res.status(401).json({ message: "Not logged in" });
+//   }
+//   res.json({ user: req.session.user });
+// });
 
 app.post("/logout", (req, res) => {
   req.session.destroy(() => {
