@@ -18,14 +18,6 @@ function moveSlide(direction) {
         carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
-// Handle fridge selection from dropdown
-const fridgeNumberDropdown = document.getElementById("fridgeNumber");
-
-fridgeNumberDropdown.addEventListener("change", function() {
-        const selectedValue = parseInt(fridgeNumberDropdown.value, 10);
-        moveToSlide(selectedValue - 1); // Adjust index (dropdown starts at 1, array starts at 0)
-});
-
 // Move carousel to a specific slide based on the fridge selected
 function moveToSlide(slideNumber) {
         const carousel = document.getElementById("carousel");

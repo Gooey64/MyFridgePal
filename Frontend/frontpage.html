@@ -12,6 +12,11 @@
         <h1>My Fridge</h1>
         <button><a href="login.html">Login</a></button>
         <button><a href="fridges.html">Fridges</a></button>
+        <select id="fridgeNumber" name="fridgeNumber" onchange="moveToSlide(value - 1)">
+                <option value="1">Fridge</option>
+                <option value="2">Freezer</option>
+                <option value="3">Pantry</option>
+        </select><br><br>
         <div class="carousel-container">
                 <div class="carousel" id="carousel">
                         <!-- First Table -->
@@ -78,11 +83,6 @@
         <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
 
-        <select id="fridgeNumber" name="fridgeNumber">
-                <option value="1">Fridge</option>
-                <option value="2">Freezer</option>
-                <option value="3">Pantry</option>
-        </select><br><br>
         <div class = "form">
         <h2>Edit Fridge Item</h2>
         
