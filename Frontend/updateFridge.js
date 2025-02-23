@@ -7,12 +7,19 @@ function addFood() {
         const newRow = fridge.insertRow(); // Insert a new row into the tbody
 
         // Create cells in the new row
-        const deleteBtn = newRow.insertCell(0);
+        const deleteCell = newRow.insertCell(0);
         const number = newRow.insertCell(1);
         const name = newRow.insertCell(2);
         const purchaseDate = newRow.insertCell(3);
         const openedDate = newRow.insertCell(4);
         const expirDate = newRow.insertCell(5);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'X';
+        deleteBtn.style.color = 'white';
+        deleteBtn.style.backgroundColor = 'red';
+        deleteBtn.addEventListener('click', () => deleteFood(newRow));
+        deleteCell.appendChild(deleteBtn);
 
         // Set cell content with values from input fields
         number.innerHTML = fridge.rows.length;
@@ -20,12 +27,6 @@ function addFood() {
         purchaseDate.innerHTML = document.getElementById("purchaseDate").value;
         openedDate.innerHTML = document.getElementById("openedDate").value;
         expirDate.innerHTML = document.getElementById("expirDate").value;
-
-        deleteBtn.innerHTML = document.createElement('button');
-        deleteBtn.textContent = 'X';
-        deleteBtn.style.color = 'white';
-        deleteBtn.style.backgroundColor = 'red';
-        deleteBtn.addEventListener('click', deleteFood(fridgeNum, number));
 
         // Clear the form inputs
         document.getElementById("name").value = '';
@@ -63,12 +64,8 @@ function editFood() {
         document.getElementById("newValue").value = '';
 }
 
-function deleteFood(fridgeNum, rowNum) {
-        const fridge = document.getElementById(`fridge-${fridgeNum}`)
-                               .querySelector('table')
-                               .getElementsByTagName('tbody')[0];
-        const rows = fridge.rows;
-        rows.splice(rowNum, 1);
+function deleteFood(row) {
+        row.remove();
 }
 
 let currSlide = 0;
