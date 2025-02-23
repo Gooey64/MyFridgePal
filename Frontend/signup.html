@@ -11,35 +11,39 @@
       <h1>MyFridgePal</h1>
       <div class="login">
         <form action="login.html" id="signupForm">
-          <label>
-            Username<br />
+        <div class = "loginFormItem">
+
+          <label>Username</label>
             <input type="text" 
                    id="username-input"
                    name="username"
                    maxlength="40"
                    required />
-          </label>
-          <label>
-            Password<br />
+        </div>
+        <div class = "loginFormItem">
+        <label>Password</label>
             <input type="password" 
                    id="password-input"
                    name="password"
                    maxlength="40"
                    minlength="8"
                    required />
-          </label>
-          <label>
-                Confirm Password<br />
+        
+        </div>
+        <div class = "loginFormItem">
+        <label>Confirm Password</label>
                 <input type="password" 
                        id="password-confirm"
                        name="password-confirm"
                        maxlength="40"
                        minlength="8"
                        required />
-              </label>
+        </div>  
+        <div class = "loginFormItem">
           <button type="submit">Create Account</button>
+        </div>
         </form>
-        <div>
+        <div class = "loginFormItem">
                 <p>Already have an account?</p>
                 <button><a href = "login.html">Login</a></button>
         </div>
