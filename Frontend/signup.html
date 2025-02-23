@@ -42,21 +42,39 @@
         </form>
       </div>
       <script>
+        
         document.getElementById("signupForm").addEventListener('submit', async (event) => {
+                
                 event.preventDefault();
 
+                // const isValid = false;
                 const username = document.getElementById('username-input').value;
-                const password = document.getElementById('password-confirm').value;
+                const passwordInput = document.getElementById('password-input').value;
+                const passwordConfirm = document.getElementById('password-confirm').value;
 
-                const response = await fetch('http://localhost:3000/signup', {
+                if (passwordInput !== passwordConfirm) {
+                        alert("Passwords do not match!");
+                        return;
+                }
+
+                const response = await fetch('https://localhost:3000/signup', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username, password })
+                        headers: {
+                                'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, passwordInput }),
                 });
 
                 const data = await response.json();
-                alert(data.message);
-        })
+
+                if (data.success) {
+                        console.log("User created successfully");
+                }
+                else {
+                        console.log("User not created successfully :(");
+                }
+                
+        });
       </script>
     </main>
 </body>

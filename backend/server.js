@@ -1,5 +1,15 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const express = require("express");
 const uri = "mongodb+srv://dbUser:HkL67mVXTSwL7jki@myfridgepal.ngs96.mongodb.net/?retryWrites=true&w=majority&appName=MyFridgePal";
+const app = express();
+const port = 3000;
+const cors = require("cors");
+
+app.use(express.json());
+app.use(cors({
+  origin: 'https://localhost:8080', // Allow requests from front-end port
+}));
+
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -10,30 +20,48 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
+async function connectDB() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    
+    console.log("Connected to MongoDB!");
+
     const database = client.db("MyFridgePal");
-    const usersCollection = database.collection("Users");
-
-    //TODO: remove
-    //this just tests that we can add new users
-    const newUser = {
-      username: "HelloWorld",
-      password: "12345678",
-      createdAt: new Date(),
-    };
-
-    const result = await usersCollection.insertOne(newUser);
-    console.log(`Added new user with ID: ${result.insertedId}`);
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+    app.locals.db = database;
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err);
   }
 }
-run().catch(console.dir);
+
+app.post("/signup", async (req, res) => {
+  const {username, password } = req.body;
+
+  const usersCollection = db.collection("Users");
+  const existingUser = await usersCollection.findOne({ username });
+
+  if (existingUser) { 
+    return res.json({ success: false, message: "Username already taken!"});
+  }
+
+  const newUser = { username, password, createdAt: new Date()};
+
+  try {
+    const result = await usersCollection.insertOne(newUser);
+    res.json({success: true, message: `User created with ID: ${result.insertedId}`});
+  } catch (error) {
+    res.status(500).json({success: false, message: "Error creating user"});
+  }
+});
+
+
+process.on('SIGINT', async () => {
+  console.log("Closing MongoDB connection...");
+  await client.close();
+  console.log("MongoDB connection closed.");
+  process.exit(0);
+});
+
+connectDB().then(() => {
+  app.listen(port, () => { 
+    console.log(`Server is running on https://localhost:${port}`);
+  });
+});
