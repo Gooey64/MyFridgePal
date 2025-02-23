@@ -88,6 +88,7 @@ app.post("/login", cors({
 }),
 
 async (req, res) => {
+  console.log("Login request received");
   const { username, password } = req.body;
 
   const db = app.locals.db;
@@ -95,7 +96,8 @@ async (req, res) => {
   
   const existingUser = await usersCollection.findOne({ username });
 
-  if (!existingUser) { 
+  if (!existingUser) {
+    console.log("No account exists with that username");
     return res.json({ success: false, message: "No account exists with that username." });
   }
 
@@ -104,7 +106,7 @@ async (req, res) => {
   }
 
   req.session.user = { username: existingUser.username, id: existingUser._id};
-  console.log(req.session);
+  console.log("Session set:", req.session);
   return res.json({ success: true, message: "Successful Login" });
 });
 
