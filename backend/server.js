@@ -104,10 +104,12 @@ async (req, res) => {
   }
 
   req.session.user = { username: existingUser.username, id: existingUser._id};
+  console.log(req.session);
   return res.json({ success: true, message: "Successful Login" });
 });
 
 app.get("/getUser", (req, res) => {
+  console.log('Session:', req.session);
   if (req.session.user) {
     // If the user is logged in, send the username back
     res.json({ username: req.session.user.username });
