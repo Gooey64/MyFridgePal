@@ -4,6 +4,7 @@ const uri = process.env.MONGODB_URI;
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
+const path = require('path');
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -54,8 +55,10 @@ app.use(session({
   }
 }));
 
+app.use(express.static(path.join(__dirname, '../Frontend')));
+
 app.get('/', (req, res) => {
-  res.send('Welcome to My Website!');
+  res.sendFile(path.join(__dirname, '..', 'Frontend', 'login.html'));
 });
 
 app.post("/signup", async (req, res) => {
@@ -79,7 +82,12 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
+app.post("/login", cors({
+  origin: "https://salty-island-68864-4dea84da182c.herokuapp.com",
+  credentials: true,
+}),
+
+async (req, res) => {
   const { username, password } = req.body;
 
   const db = app.locals.db;
