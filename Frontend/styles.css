@@ -8,6 +8,18 @@ h1 {
     font-size: 50px;
 }
 
+button {
+    border-radius: 10%;
+    font-size: 18px;
+    background-color: #F7F7F7;
+    border: none;
+    padding: 1%;
+}
+
+.login button:hover{
+    background-color: #E8D8D2;
+}
+
 .login {
     font-size: 30px;
     text-align: center;
@@ -16,7 +28,7 @@ h1 {
     margin-right: 20%;
     margin-bottom: 2%;
     padding: 5%;
-    background-color: grey;
+    background-color: #71C4C2;
 }
 
 .loginFormItem {
@@ -29,8 +41,20 @@ h1 {
     margin-bottom: 1%;
 }
 
+.login input {
+    font-size: 18px;
+    background-color: #F7F7F7;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .fridge {
-        background-color: rgb(153, 196, 245);
+        background-color: #71C4C2;
+        /* background-color: rgb(153, 196, 245); */
         color: black;
         border: 2px solid black;
         padding: 1%;
@@ -43,7 +67,8 @@ table {
 }
 
 th, td {
-        background-color: #f2f2f2;
+        background-color: #F7F7F7;
+        /* background-color: #f2f2f2; */
         padding: 10px; /* Adds space inside each table cell */
         text-align: left;
         border: 1px solid #ddd; /* Adds borders for clarity */
