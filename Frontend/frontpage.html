@@ -30,64 +30,26 @@
                 console.error('Error fetching username:', error);
                 document.getElementById('userInfo').innerHTML = "Guest's Fridges";
                 });
-
-                // First, send the login request
-                // fetch('/login', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify({ username: 'example', password: 'password' }),
-                //     credentials: 'same-origin',  // Ensure the cookie/session is sent
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     console.log(data);
-                //     if (data.success) {
-                //         // If login is successful, fetch the username
-                //         return fetch('/getUser', {
-                //             method: 'GET',
-                //             credentials: 'same-origin'
-                //         });
-                //     } else {
-                //         throw new Error('Login failed');
-                //     }
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     const userInfo = document.getElementById('userInfo');
-                    
-                //     if (data.username) {
-                //         userInfo.innerHTML = `${data.username}'s Fridges`;
-                //     } else {
-                //         userInfo.innerHTML = "Guest's Fridges";
-                //     }
-                // })
-                // .catch(error => {
-                //     console.error('Error:', error);
-                //     const userInfo = document.getElementById('userInfo');
-                //     userInfo.innerHTML = "Guest's Fridges";  // If login fails, show guest
-                // });
-            </script>
+        </script>
         <button id="logoutButton">Log out</button>
         <script>
                 document.getElementById('logoutButton').addEventListener('click', function() {
-                  fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/logout', {
-                    method: 'POST',
-                    credentials: 'include', // Include the session cookie in the request
-                  })
-                  .then(response => {
-                    if (response.ok) {
-                      console.log('Logged out successfully');
-                      // Redirect to login page or show a logged-out message
-                      window.location.href = '/login.html'; // Example: redirecting to login page
-                    } else {
-                      console.log('Logout failed');
-                    }
-                  })
-                  .catch(error => {
-                    console.log('Error during logout:', error);
-                  });
+                        fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/logout', {
+                                method: 'POST',
+                                credentials: 'include', // Include the session cookie in the request
+                        })
+                        .then(response => {
+                                if (response.ok) {
+                                        console.log('Logged out successfully');
+                                        // Redirect to login page or show a logged-out message
+                                        window.location.href = '/login.html'; // Example: redirecting to login page
+                                } else {
+                                        console.log('Logout failed');
+                                }
+                        })
+                        .catch(error => {
+                                console.log('Error during logout:', error);
+                        });
                 });
         </script>
 
