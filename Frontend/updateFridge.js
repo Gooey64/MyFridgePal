@@ -1,5 +1,6 @@
 // Add a food item to the selected fridge
 function addFood() {
+        document.getElementById("addFoodForm").addEventListener('submit', async (event) => {
         const fridgeNum = document.getElementById("fridgeNum").value;
         const fridge = document.getElementById(`fridge-${fridgeNum}`)
                        .querySelector('table')
@@ -28,11 +29,21 @@ function addFood() {
         openedDate.innerHTML = document.getElementById("openedDate").value;
         expirDate.innerHTML = document.getElementById("expirDate").value;
 
+        const response = await fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/frontpage', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ foodName : name, purchaseDate, openedDate, expirDate, fridgeNum, username }),
+            credentials: 'include',
+          });
+
         // Clear the form inputs
         document.getElementById("name").value = '';
         document.getElementById("purchaseDate").value = '';
         document.getElementById("openedDate").value = '';
         document.getElementById("expirDate").value = '';
+        })
 }
 
 // Edit a specific fridge item

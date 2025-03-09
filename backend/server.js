@@ -28,6 +28,7 @@ const client = new MongoClient(uri, {
   }
 });
 
+/*Connect to database*/ 
 async function connectDB() {
   try {
     await client.connect();
@@ -40,6 +41,7 @@ async function connectDB() {
   }
 }
 
+/*Create a session to store username information*/ 
 app.use(session({
   secret: "xfk091nrbufpeghe235slw6oisl", // Change this to a strong, random string
   resave: false, // Don't save if nothing changed
@@ -57,10 +59,12 @@ app.use(session({
 
 app.use(express.static(path.join(__dirname, '../Frontend')));
 
+/*Direct you to the login page*/ 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'Frontend', 'login.html'));
 });
 
+/*Sign up*/ 
 app.post("/signup", async (req, res) => {
   const {username, password } = req.body;
 
@@ -82,6 +86,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+/*Log in*/ 
 app.post("/login", cors({
   origin: "https://salty-island-68864-4dea84da182c.herokuapp.com",
   credentials: true,
@@ -110,17 +115,54 @@ async (req, res) => {
   return res.json({ success: true, message: "Successful Login" });
 });
 
+/*Retrieve username*/ 
 app.get("/getUser", (req, res) => {
   console.log('Session:', req.session);
   if (req.session.user) {
-    // If the user is logged in, send the username back
     res.json({ username: req.session.user.username });
   } else {
-    // If not logged in, return null or an empty response
     res.json({ username: null });
   }
 });
 
+/*Add food TODO: Complete*/
+app.post("/addFood", async (req, res) => {
+  const {foodName, purchaseDate, openedDate, expirDate, fridgeNum, username} = req.body;
+
+  const db = app.locals.db;
+  const foodsCollection = db.collection("Foods");
+
+  const newFood = { foodName, purchaseDate, openedDate, expirDate, fridgeNum, username, createdAt: new Date()};
+
+  try {
+    const result = await foodsCollection.insertOne(newFood);
+    res.json({success: true, message: `Food inserted with ID: ${result.insertedId}`});
+  } catch (error) {
+    res.status(500).json({success: false, message: "Error adding food"});
+  }
+});
+
+/*Retrieve fridges TODO: Complete*/
+app.post("/getFridges", async (req, res) => {
+  const {username, password } = req.body;
+
+  const db = app.locals.db;
+  const usersCollection = db.collection("Users");
+  const existingUser = await usersCollection.findOne({ username });
+
+  if (existingUser) { 
+    return res.json({ success: false, message: "Username already taken!"});
+  }
+
+  const newUser = { username, password, createdAt: new Date()};
+
+  try {
+    const result = await usersCollection.insertOne(newUser);
+    res.json({success: true, message: `User created with ID: ${result.insertedId}`});
+  } catch (error) {
+    res.status(500).json({success: false, message: "Error creating user"});
+  }
+});
 
 // app.get("/profile", (req, res) => {
 //   if (!req.session.user) {
