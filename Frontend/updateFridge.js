@@ -19,7 +19,17 @@ function addFood() {
         deleteBtn.textContent = 'X';
         deleteBtn.style.color = 'white';
         deleteBtn.style.backgroundColor = 'red';
-        deleteBtn.addEventListener('click', () => deleteFood(newRow));
+        deleteBtn.addEventListener('click', async (req, res) => {
+                const response = await fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/deleteFood', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username }),
+                credentials: 'include',
+                });
+                row.remove();
+        });
         deleteCell.appendChild(deleteBtn);
 
         // Set cell content with values from input fields
@@ -28,19 +38,6 @@ function addFood() {
         purchaseDate.innerHTML = document.getElementById("purchaseDate").value;
         openedDate.innerHTML = document.getElementById("openedDate").value;
         expirDate.innerHTML = document.getElementById("expirDate").value;
-
-        // const response = await fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/frontpage', {
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ foodName : name, purchaseDate, openedDate, expirDate, fridgeNum, username }),
-        //     credentials: 'include',
-        //   });
-
-        // Clear the form inputs
-        
-        // });
 }
 
 // Edit a specific fridge item
@@ -75,8 +72,8 @@ function editFood() {
         document.getElementById("expirDateEdit").value = '';
 }
 
-function deleteFood(row) {
-        row.remove();
+function deleteFood(row, foodName, purchaseDate, openedDate, expirDate, fridgeNum, username) {
+        
 }
 
 let currSlide = 0;

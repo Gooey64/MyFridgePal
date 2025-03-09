@@ -125,7 +125,7 @@ app.get("/getUser", (req, res) => {
   }
 });
 
-/*Add food TODO: Complete*/
+/*Add food*/
 app.post("/addFood", async (req, res) => {
   const {foodName, purchaseDate, openedDate, expirDate, fridgeNum, username} = req.body;
 
@@ -139,6 +139,22 @@ app.post("/addFood", async (req, res) => {
     res.json({success: true, message: `Food inserted with ID: ${result.insertedId}`});
   } catch (error) {
     res.status(500).json({success: false, message: "Error adding food"});
+  }
+});
+
+/*Remove food TODO: Complete (there may be a bug where you delete a food with the same information and all those foods get deleted)*/
+app.post("/deleteFood", async (req, res) => {
+  const {foodName, purchaseDate, openedDate, expirDate, fridgeNum, username} = req.body;
+  
+  const db = app.locals.db;
+  const foodsCollection = db.collection("Foods");
+  const existingFood = await foodsCollection.findOne({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username });
+
+  try {
+    const result = await foodsCollection.deleteOne(existingFood);
+    res.json({success: true, message: `Food deleted with ID: ${result.insertedId}`});
+  } catch (error) {
+    res.status(500).json({success: false, message: "Error deleting food"});
   }
 });
 
