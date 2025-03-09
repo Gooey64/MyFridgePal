@@ -146,15 +146,23 @@ app.post("/addFood", async (req, res) => {
 app.post("/deleteFood", async (req, res) => {
   const {foodName, purchaseDate, openedDate, expirDate, fridgeNum, username} = req.body;
   
+  try {
   const db = app.locals.db;
   const foodsCollection = db.collection("Foods");
-  const existingFood = await foodsCollection.findOne({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username });
+  if (!existingFood) {
+    return res.status(404).json({ success: false, message: "Food item not found" });
+  }
 
-  try {
-    const result = await foodsCollection.deleteOne(existingFood);
-    res.json({success: true, message: `Food deleted with ID: ${result.insertedId}`});
-    console.log("Deleted food item.");
+  // Delete the found food item
+  const result = await foodsCollection.deleteOne({ _id: existingFood._id });
+    if (result.deletedCount === 1) {
+      res.json({ success: true, message: "Food item deleted successfully" });
+      console.log("Deleted food item.");
+    } else {
+      res.status(500).json({ success: false, message: "Failed to delete food item" });
+    }
   } catch (error) {
+    console.error("Error deleting food:", error);
     res.status(500).json({success: false, message: "Error deleting food"});
   }
 });
