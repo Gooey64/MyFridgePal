@@ -149,6 +149,8 @@ app.post("/deleteFood", async (req, res) => {
   try {
   const db = app.locals.db;
   const foodsCollection = db.collection("Foods");
+
+  const existingFood = await foodsCollection.findOne({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username });
   if (!existingFood) {
     return res.status(404).json({ success: false, message: "Food item not found" });
   }
