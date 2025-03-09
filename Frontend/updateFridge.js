@@ -25,7 +25,7 @@ function addFood() {
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username }),
+                body: JSON.stringify({ name, purchaseDate, openedDate, expirDate, fridgeNum, username }),
                 credentials: 'include',
                 });
                 row.remove();
