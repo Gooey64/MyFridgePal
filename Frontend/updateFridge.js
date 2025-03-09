@@ -43,7 +43,7 @@ function addFood() {
         document.getElementById("purchaseDate").value = '';
         document.getElementById("openedDate").value = '';
         document.getElementById("expirDate").value = '';
-        })
+        });
 }
 
 // Edit a specific fridge item
