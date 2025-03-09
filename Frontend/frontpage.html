@@ -132,7 +132,7 @@
                         <option value = "3">Pantry</option>
                 </select><br><br>
                 <h2>Add Food Item</h2>
-                <form onsubmit = "event.preventDefault(); addFood();" id = "addFoodForm">
+                <form id = "addFoodForm">
                         <label for = "name">Food Name:</label>
                         <input type = "text" id = "name" name = "name" required>
                         <br><br>
@@ -161,7 +161,14 @@
                 <script>
                         const username = "dummyName";
                         document.getElementById("addFoodForm").addEventListener('submit', async (event) => {
-                                
+                                event.preventDefault();
+                                addFood();
+                                const foodName = document.getElementById("name").value;
+                                const purchaseDate = document.getElementById("purchaseDate").value;
+                                const openedDate = document.getElementById("openedDate").value;
+                                const expirDate = document.getElementById("expirDate").value;
+                                const fridgeNum = document.getElementById("fridgeNum").value;
+
                                 const response = await fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/frontpage', {
                                 method: 'POST',
                                 headers: {
@@ -171,6 +178,10 @@
                                 credentials: 'include',
                                 });
                         });
+                        document.getElementById("name").value = '';
+                        document.getElementById("purchaseDate").value = '';
+                        document.getElementById("openedDate").value = '';
+                        document.getElementById("expirDate").value = '';
                 </script>
                 <h2>Edit Food Item</h2>
                 <form onsubmit = "event.preventDefault(); editFood();">
