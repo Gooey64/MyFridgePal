@@ -142,6 +142,22 @@ app.post("/addFood", async (req, res) => {
   }
 });
 
+/*Retrieve foods TODO: Complete (retrieve foods from database)*/
+app.post("/retrieveFoods", async (req, res) => {
+  const {username} = req.body;
+
+  const db = app.locals.db;
+  const foodsCollection = db.collection("Foods");
+
+  const userFoods = [foodsCollection.find(username)];
+
+  try {
+    res.json({userFoods});
+  } catch (error) {
+    res.status(500).json({success: false, message: "Error retrieving foods"});
+  }
+});
+
 /*Remove food TODO: Complete (there may be a bug where you delete a food with the same information and all those foods get deleted)*/
 app.post("/deleteFood", async (req, res) => {
   const {foodName, purchaseDate, openedDate, expirDate, fridgeNum, username} = req.body;
