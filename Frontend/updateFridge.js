@@ -15,6 +15,13 @@ function addFood() {
         const openedDate = newRow.insertCell(4);
         const expirDate = newRow.insertCell(5);
 
+        // Set cell content with values from input fields
+        number.innerHTML = fridge.rows.length;
+        name.innerHTML = document.getElementById("name").value;
+        purchaseDate.innerHTML = document.getElementById("purchaseDate").value;
+        openedDate.innerHTML = document.getElementById("openedDate").value;
+        expirDate.innerHTML = document.getElementById("expirDate").value;
+
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'X';
         deleteBtn.style.color = 'white';
@@ -31,13 +38,6 @@ function addFood() {
                 row.remove();
         });
         deleteCell.appendChild(deleteBtn);
-
-        // Set cell content with values from input fields
-        number.innerHTML = fridge.rows.length;
-        name.innerHTML = document.getElementById("name").value;
-        purchaseDate.innerHTML = document.getElementById("purchaseDate").value;
-        openedDate.innerHTML = document.getElementById("openedDate").value;
-        expirDate.innerHTML = document.getElementById("expirDate").value;
 }
 
 // Edit a specific fridge item
