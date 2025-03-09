@@ -176,11 +176,12 @@
                                 body: JSON.stringify({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username }),
                                 credentials: 'include',
                                 });
+                                document.getElementById("name").value = '';
+                                document.getElementById("purchaseDate").value = '';
+                                document.getElementById("openedDate").value = '';
+                                document.getElementById("expirDate").value = '';
                         });
-                        document.getElementById("name").value = '';
-                        document.getElementById("purchaseDate").value = '';
-                        document.getElementById("openedDate").value = '';
-                        document.getElementById("expirDate").value = '';
+                        
                 </script>
                 <h2>Edit Food Item</h2>
                 <form onsubmit = "event.preventDefault(); editFood();">
