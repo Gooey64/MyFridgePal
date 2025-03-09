@@ -27,6 +27,7 @@ function addFood() {
         deleteBtn.style.color = 'white';
         deleteBtn.style.backgroundColor = 'red';
         deleteBtn.addEventListener('click', async (req, res) => {
+                const username = "dummyName";
                 const response = await fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/deleteFood', {
                 method: 'POST',
                 headers: {
