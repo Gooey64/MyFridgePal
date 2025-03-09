@@ -159,13 +159,13 @@
                 </form>
                 
                 <script>
-                        
+                        const username = "dummyName";
                         document.getElementById("addFoodForm").addEventListener('submit', async (event) => {
-                                const username = "dummyName";
+                                
                                 const response = await fetch('https://salty-island-68864-4dea84da182c.herokuapp.com/frontpage', {
                                 method: 'POST',
                                 headers: {
-                                'Content-Type': 'application/javascript',
+                                'Content-Type': 'application/json',
                                 },
                                 body: JSON.stringify({ foodName : name, purchaseDate, openedDate, expirDate, fridgeNum, username }),
                                 credentials: 'include',
