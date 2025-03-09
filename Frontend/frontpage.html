@@ -132,7 +132,7 @@
                         <option value = "3">Pantry</option>
                 </select><br><br>
                 <h2>Add Food Item</h2>
-                <form id = "addFoodForm">
+                <form id = "addFoodForm" onsubmit = "event.preventDefault(); addFood();">
                         <label for = "name">Food Name:</label>
                         <input type = "text" id = "name" name = "name" required>
                         <br><br>
@@ -162,7 +162,6 @@
                         const username = "dummyName";
                         document.getElementById("addFoodForm").addEventListener('submit', async (event) => {
                                 event.preventDefault();
-                                addFood();
                                 const foodName = document.getElementById("name").value;
                                 const purchaseDate = document.getElementById("purchaseDate").value;
                                 const openedDate = document.getElementById("openedDate").value;
