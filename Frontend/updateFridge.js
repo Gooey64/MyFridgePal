@@ -36,7 +36,7 @@ function addFood() {
                 body: JSON.stringify({ name, purchaseDate, openedDate, expirDate, fridgeNum, username }),
                 credentials: 'include',
                 });
-                row.remove();
+                newRow.remove();
         });
         deleteCell.appendChild(deleteBtn);
 }
