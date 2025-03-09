@@ -148,7 +148,7 @@ app.post("/deleteFood", async (req, res) => {
   
   const db = app.locals.db;
   const foodsCollection = db.collection("Foods");
-  const existingFood = await foodsCollection.deleteOne({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username });
+  const existingFood = await foodsCollection.findOne({ foodName, purchaseDate, openedDate, expirDate, fridgeNum, username });
 
   try {
     const result = await foodsCollection.deleteOne(existingFood);
