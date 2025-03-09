@@ -153,6 +153,7 @@ app.post("/deleteFood", async (req, res) => {
   try {
     const result = await foodsCollection.deleteOne(existingFood);
     res.json({success: true, message: `Food deleted with ID: ${result.insertedId}`});
+    console.log("Deleted food item.");
   } catch (error) {
     res.status(500).json({success: false, message: "Error deleting food"});
   }
