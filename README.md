@@ -1,4 +1,5 @@
 Rebecca Lee, Jeffrey Li
+
 Presented at JumboHack 2025 under the <SUSTAINABILITY> track.
 
 MyFridgePal is a super fun website that you can use to keep track of the items
