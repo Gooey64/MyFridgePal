@@ -1,4 +1,6 @@
-ANNOUNCEMENT: MyFridgePal is currently offline to prevent hosting costs.
+ANNOUNCEMENT: MyFridgePal is currently offline to prevent hosting costs, so the link below doesn't currently work.
+
+Use MyFridgePal at this link: https://salty-island-68864-4dea84da182c.herokuapp.com/
 
 Created by Rebecca Lee, Jeffrey Li
 
