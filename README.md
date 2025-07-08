@@ -13,8 +13,3 @@ Team Member Contributions:
     <Jeffrey Li>: frontend item-adding and fridge functionality, styling, HTML
 
 MyFridgePal will be migrating to a mobile app format soon!
-
-ACKNOWLEDGEMENTS:
-
-    <CHATGPT>
-    <StackOverflow>
