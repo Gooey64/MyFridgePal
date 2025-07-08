@@ -12,7 +12,6 @@ Team Member Contributions:
     
     <Jeffrey Li>: frontend item-adding and fridge functionality, styling, HTML
     
-    ...
 
 ACKNOWLEDGEMENTS:
 
