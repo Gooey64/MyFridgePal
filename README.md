@@ -1,4 +1,6 @@
-Rebecca Lee, Jeffrey Li
+ANNOUNCEMENT: MyFridgePal is currently offline to prevent hosting costs.
+
+Created by Rebecca Lee, Jeffrey Li
 
 Presented at JumboHack 2025 under the <SUSTAINABILITY> track.
 
