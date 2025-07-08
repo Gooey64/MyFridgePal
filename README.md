@@ -14,13 +14,12 @@ Team Member Contributions:
     
     ...
 
-ACKNOWLEDGEMENTS
+ACKNOWLEDGEMENTS:
 
-ChatGPT
+    <CHATGPT>
+    <StackOverflow>
 
-StackOverflow
-
-REFLECTION
+REFLECTION:
 
 <What motivated your team to choose this project?>
 
