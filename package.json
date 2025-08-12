@@ -1,31 +1,24 @@
 {
-        "scripts": {
-                "start": "node backend/server.js"
-        },
-        "dependencies": {
-                "connect-mongo": "^5.1.0",
-                "cors": "^2.8.5",
-                "express": "4.21.2",
-                "express-session": "^1.18.1",
-                "mongodb": "6.13.1",
-                "vercel": "^41.2.0"
-        },
-        "engines": {
-                "node": "22.14.0",
-                "npm": "10.9.2"
-        },
-        "name": "myfridgepal",
-        "version": "1.0.0",
-        "description": "attempt to fix heroku error",
-        "main": "index.js",
-        "repository": {
-                "type": "git",
-                "url": "git+https://github.com/Gooey64/MyFridgePal.git"
-        },
-        "author": "Rebecca Lee",
-        "license": "ISC",
-        "bugs": {
-                "url": "https://github.com/Gooey64/MyFridgePal/issues"
-        },
-        "homepage": "https://github.com/Gooey64/MyFridgePal#readme"
+  "name": "myfridgepal",
+  "version": "1.0.0",
+  "description": "MyFridgePal Mobile Attempt",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --env-file=.env --watch src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gooey64/MyFridgePal.git"
+  },
+  "author": "Gooey64",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gooey64/MyFridgePal/issues"
+  },
+  "homepage": "https://github.com/Gooey64/MyFridgePal#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
