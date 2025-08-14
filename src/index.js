@@ -1,19 +1,16 @@
 import express from 'express'; //Imports Express.js
+import foodsRoutes from './routes/foodsRoutes.js';
+import fridgesRoutes from './routes/fridgesRoutes.js';
+import usersRoutes from './routes/usersRoutes.js';
 
 const app = express() //Creates an Express application instance
 const port = process.env.PORT || 3000
 
-app.get('/', (req, res) => { 
-        res.send('Login Page')
-}) //Defines a route for the login page.
+app.use('/foods', foodsRoutes);
+app.use('/fridges', fridgesRoutes);
+app.use('/users', usersRoutes);
 
-app.get('/signup', (req, res) => { 
-        res.send('Signup Page')
-}) //Defines a route for the signup page.
-
-app.get('/home', (req, res) => { 
-        res.send('Home Page')
-}) //Defines a route for the home page where you can see all your fridges.
+/* Porting */
 
 app.listen(port, () => {
         console.log(`MyFridgePal app listening on port ${port}`)
