@@ -6,6 +6,7 @@ import usersRoutes from './routes/usersRoutes.js';
 const app = express() //Creates an Express application instance
 const port = process.env.PORT || 3000
 
+app.use(express.json());
 app.use('/foods', foodsRoutes);
 app.use('/fridges', fridgesRoutes);
 app.use('/users', usersRoutes);

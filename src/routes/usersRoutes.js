@@ -3,6 +3,8 @@ import {usersController} from "../controllers/usersController.js"
 
 const router = Router();
 
+//TODO: Build your first full-stack app with react native & node.js 1:54:34
+
 /* User Routes */
 
 //get all users
