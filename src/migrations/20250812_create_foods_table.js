@@ -12,6 +12,7 @@ export async function up() {
                         location INT REFERENCES fridges(id) ON DELETE CASCADE,
                         openOrNot BOOLEAN,
                         openingDate DATE,
+                        expirationDate DATE,
                         notes TEXT,
                         user_id INT REFERENCES users(id) ON DELETE CASCADE,
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
