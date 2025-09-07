@@ -1,12 +1,13 @@
 {
   "expo": {
-    "name": "AppleRemindersClone",
-    "slug": "AppleRemindersClone",
+    "name": "MyFridgePal",
+    "slug": "MyFridgePal",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "scheme": "MyFridgePal",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -24,6 +25,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
