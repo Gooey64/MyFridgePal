@@ -18,7 +18,7 @@ export const fridgesService = {
                 const {fridgeName,
                         fridgeType,
                         notes} = newFridge;
-             33   const sanitizedFridge = {
+                const sanitizedFridge = {
                         fridgeName: fridgeName?.trim(),
                         fridgeType: fridgeType?.trim(),
                         notes
